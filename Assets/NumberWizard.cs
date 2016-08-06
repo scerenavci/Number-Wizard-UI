@@ -7,22 +7,20 @@ public class NumberWizard : MonoBehaviour {
 	int max ;
 	int min ;
 	int guess ;	
-	public int maxGuessesAllowed = 5;
+	public int maxGuessesAllowed = 10;
 
 	public Text text;
 	
 	void Start () {
-	
-		StartGame();
 		
+		StartGame();
 	}
 	
 	void StartGame () {
 	
-		max = 1000;
+		max = 1001;
 		min = 1;
-		guess =500;		
-		max = max + 1;		
+		NextGuess();			
 	}
 	
 	public void GuessLower(){
@@ -34,8 +32,9 @@ public class NumberWizard : MonoBehaviour {
 		NextGuess();
 	}
 	
-	void NextGuess () {	
-		guess = (max + min )/2;
+	void NextGuess () {
+		
+		guess = Random.Range(min,max+1);
 		text.text = guess.ToString();
 		maxGuessesAllowed --;
 		if (maxGuessesAllowed <= 0) {
